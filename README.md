@@ -1,8 +1,6 @@
 # irp: the Intuitive Response Proxy
 
-<video src="docs/media/demo.mp4" controls muted width="100%">
-  <a href="docs/media/demo.mp4">Watch the demo</a> (left: the prepared replies, right: Claude Code serving them)
-</video>
+<video src="https://github.com/user-attachments/assets/2e9245bc-d5bf-4c1f-beea-c05800fa2f84" controls muted width="100%"></video>
 
 > "I knew you were going to ask that."
 
