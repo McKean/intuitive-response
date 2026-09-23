@@ -1,0 +1,19 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Build output
+/irp
+*.test
+*.out
+
+# Local captures and state, if pointed inside the repo
+/state/
+*.log
+
+# Editors and OS
+.idea/
+.vscode/
+*.swp
+.DS_Store

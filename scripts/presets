@@ -1,0 +1,14 @@
+#!/bin/sh
+# Live presets as a table. Usage: watch -n1 -t scripts/presets [session]
+# Set IRP_PORT if the proxy isn't on 18766; responses are cut at 80 characters.
+url="http://127.0.0.1:${IRP_PORT:-18766}/_irp/presets${1:+?session=$1}"
+json=$(curl -sf "$url") || { echo "proxy not reachable at $url"; exit 1; }
+echo "$json" | jq -r '
+  (["TURNS", "CONF", "EXPECTED INPUT", "RESPONSE"]),
+  (.[] | [
+    .turns_left,
+    (if .min_confidence == 0 then "-" else .min_confidence end),
+    .expected_input,
+    (.response | gsub("\\s+"; " ") | if length > 80 then .[0:79] + "…" else . end)
+  ])
+  | @tsv' | column -t -s "$(printf '\t')"
